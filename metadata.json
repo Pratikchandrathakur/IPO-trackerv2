@@ -1,0 +1,5 @@
+{
+  "name": "Nepal IPO Radar",
+  "description": "Real-time IPO tracking system for Nepal Stock Exchange (NEPSE) using Gemini AI for live market data grounding and Supabase for subscription management.",
+  "requestFramePermissions": []
+}

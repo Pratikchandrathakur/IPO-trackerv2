@@ -6,13 +6,22 @@ const DEFAULT_SUPABASE_URL = 'https://uobndwcuytmrjwgmoydg.supabase.co';
 const DEFAULT_SUPABASE_KEY = 'sb_publishable_8SHT78tR2rCRUV9L-yH1Sw_x6Hr2OfZ';
 
 const getEnvVar = (key: string, fallback: string) => {
+  // Check Vite standard (import.meta.env)
+  try {
+    // @ts-ignore
+    if (import.meta && import.meta.env && import.meta.env[key]) {
+      // @ts-ignore
+      return import.meta.env[key];
+    }
+  } catch (e) {}
+
+  // Check Node/Process standard (process.env)
   try {
     if (typeof process !== 'undefined' && process.env && process.env[key]) {
       return process.env[key];
     }
-  } catch (e) {
-    // process is not defined
-  }
+  } catch (e) {}
+  
   return fallback;
 };
 
